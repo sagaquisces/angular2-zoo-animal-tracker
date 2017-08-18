@@ -33,8 +33,8 @@ import { Animal } from './animal.model';
                 <div class="form-group">
                   <label class="label label-primary" for="sex">Sex:</label>
                   <select class="form-control" id="sex" #newSex>
-                    <option [value]="Male">Male</option>
-                    <option [value]="Female">Female</option>
+                    <option [ngValue]="Male">Male</option>
+                    <option [ngValue]="Female">Female</option>
                   </select>
                 </div>
               </div>
@@ -42,9 +42,9 @@ import { Animal } from './animal.model';
                 <div class="form-group">
                   <label class="label label-primary" for="diet">Diet:</label>
                   <select class="form-control" id="diet" #newDiet>
-                    <option [value]="Carnivore">Carnivore</option>
-                    <option [value]="Herbivore">Herbivore</option>
-                    <option [value]="Omnivore">Omnivore</option>
+                    <option [ngValue]="Carnivore">Carnivore</option>
+                    <option [ngValue]="Herbivore">Herbivore</option>
+                    <option [ngValue]="Omnivore">Omnivore</option>
                   </select>
                 </div>
               </div>
@@ -72,7 +72,17 @@ import { Animal } from './animal.model';
               <label class="label label-primary" for="dislikes">Dislikes:</label>
               <input class="form-control" id="dislikes" #newDislikes />
             </div>
-            <button class="btn"(click)="doneButtonClicked()">Done</button>
+
+            <div class="row">
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label class="label label-primary" for="enteredby">Your initials:</label>
+                  <input class="form-control" id="enteredby" #newEnteredBy />
+                </div>
+              </div>
+            </div>
+
+            <button class="btn" (click)="submitForm(newSpecies.value, newName.value, newAge.value, newDiet.value, newLocation.value, newCaretakers.value, newSex.value, newLikes.value, newDislikes.value, newEnteredBy.value); newSpecies.value=''; newName.value=''; newAge.value=''; newLikes.value=''; newLocation.value=''; newCaretakers.value=''; newDislikes.value=''; newEnteredBy.value='';">Add Animal</button>
 
 
           </div>
@@ -84,5 +94,10 @@ import { Animal } from './animal.model';
 })
 
 export class NewAnimalComponent {
+  @Output() newAnimalSender = new EventEmitter();
 
+  submitForm(species: string, name: string, age: number, diet: string, location: string, caretakers: number, sex: string, likes: string, dislikes: string, enteredby: string) {
+    var newAnimalToAdd: Animal = new Animal(species, name, age, diet, location, caretakers, sex, likes, dislikes, enteredby);
+    this.newAnimalSender.emit(newAnimalToAdd);
+  }
 }

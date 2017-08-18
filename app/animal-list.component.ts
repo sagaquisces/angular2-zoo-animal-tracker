@@ -7,15 +7,21 @@ import { Animal } from './animal.model';
 
   <ul class="list-group">
     <li [class]="dietColor(currentAnimal)" *ngFor="let currentAnimal of childAnimalList">
-      <h2>{{currentAnimal.name}}</h2>
+      <h2><span class="label label-default">{{currentAnimal.name}}</span></h2>
       <h3>{{currentAnimal.species}}</h3>
-    age: {{currentAnimal.age}}, diet: {{currentAnimal.diet}}, location: {{currentAnimal.location}}, No. of caretakers: {{currentAnimal.caretakers}}
-
-    <button (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button>
+      <ul class="list-group">
+        <li class="lead list-group-item"><span class="label label-default">sex:</span> {{currentAnimal.sex}}</li>
+        <li class="lead list-group-item"><span class="label label-default">age:</span> {{currentAnimal.age}}</li>
+        <li class="lead list-group-item"><span class="label label-default">diet:</span> {{currentAnimal.diet}}</li>
+        <li class="lead list-group-item"><span class="label label-default">location:</span> {{currentAnimal.location}}
+        <li class="lead list-group-item"><span class="label label-default">No. of caretakers:</span> {{currentAnimal.caretakers}}</li>
+      </ul>
+    <button *ngIf="!childSelectedAnimal" (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button>
     <edit-animal [childSelectedAnimal]="childSelectedAnimal"
     [childCurrentAnimal]="currentAnimal" (doneButtonClickedSender)="doneButtonClicked()"></edit-animal>
     </li>
   </ul>
+  <hr>
   `
 })
 

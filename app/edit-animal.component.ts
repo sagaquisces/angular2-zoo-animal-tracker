@@ -4,7 +4,7 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'edit-animal',
   template: `
-    <div class="well "*ngIf="childSelectedAnimal === childCurrentAnimal">
+    <div class="well" *ngIf="childSelectedAnimal === childCurrentAnimal">
       <h3>Edit {{childSelectedAnimal.name}}'s details:</h3>
       <hr>
       <div class="form-inline">
@@ -20,7 +20,7 @@ import { Animal } from './animal.model';
           <label for="caretakers">Edit No. of Caretakers</label>
           <input class="form-control" [(ngModel)]="childSelectedAnimal.caretakers" id="caretakers" />
         </div>
-        <button class="btn btn-default"(click)="doneButtonClicked()">Done</button>
+        <button class="btn"(click)="doneButtonClicked()">Done</button>
       </div>
     </div>
   `
