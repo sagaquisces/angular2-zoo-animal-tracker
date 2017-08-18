@@ -5,9 +5,12 @@ import { Animal } from './animal.model';
   selector: 'animal-list',
   template: `
   <ul class="list-group">
-    <li [class]="dietColor(currentAnimal)" *ngFor="let currentAnimal of childAnimalList">{{currentAnimal.name}}
-<!--
-    <button (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button> -->
+    <li [class]="dietColor(currentAnimal)" *ngFor="let currentAnimal of childAnimalList">
+      <h2>{{currentAnimal.name}}</h2>
+      <h3>{{currentAnimal.species}}</h3>
+    age: {{currentAnimal.age}}, diet: {{currentAnimal.diet}}, location: {{currentAnimal.location}}, No. of caretakers: {{currentAnimal.caretakers}}
+
+    <button (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button>
     </li>
   </ul>
   `
@@ -15,19 +18,20 @@ import { Animal } from './animal.model';
 
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
-  // @Output() clickSender = new EventEmitter();
+  @Output() clickSender = new EventEmitter();
 
   dietColor(currentAnimal) {
-    if (currentAnimal.diet === "carnivore"){
+    if (currentAnimal.diet === "Carnivore"){
       return "list-group-item list-group-item-danger";
-    } else if (currentAnimal.diet === "herbivore") {
+    } else if (currentAnimal.diet === "Herbivore") {
       return "list-group-item list-group-item-success";
     } else {
       return "list-group-item";
     }
   }
 
-  // editButtonHasBeenClicked(animalToEdit: Animal) {
-  //   this.clickSender.emit(animalToEdit);
-  // }
+  editButtonHasBeenClicked(animalToEdit: Animal) {
+    this.clickSender.emit(animalToEdit);
+    // alert(animalToEdit.name);
+  }
 }
