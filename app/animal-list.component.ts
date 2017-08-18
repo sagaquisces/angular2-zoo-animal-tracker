@@ -4,6 +4,7 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'animal-list',
   template: `
+
   <ul class="list-group">
     <li [class]="dietColor(currentAnimal)" *ngFor="let currentAnimal of childAnimalList">
       <h2>{{currentAnimal.name}}</h2>

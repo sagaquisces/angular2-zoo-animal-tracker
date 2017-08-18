@@ -34,8 +34,8 @@ Zoo Animal Tracker Application
 └─ Animal model (app/animal.model.ts)
 └─ App module (app/app.module.ts)
     └── App component (app/app.component.ts)
-        ├── AnimalList component (app/animal-list.component.ts)
-        ├── EditAnimal component (app/edit-animal.component.ts)
+        ├── AnimalList component(app/animal-list.component.ts)
+        |   └── EditAnimal component (app/edit-animal.component.ts)
         └── NewAnimal component (app/new-animal.component.ts)
 ```
 

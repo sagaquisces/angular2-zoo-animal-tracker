@@ -4,7 +4,7 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'edit-animal',
   template: `
-    <div *ngIf="childSelectedAnimal === childCurrentAnimal">
+    <div class="well "*ngIf="childSelectedAnimal === childCurrentAnimal">
       <h3>Edit {{childSelectedAnimal.name}}'s details:</h3>
       <hr>
       <div class="form-inline">

@@ -7,7 +7,7 @@ import { Animal } from './animal.model';
   <div class="container">
     <h1>Zoo Animal Tracker</h1>
     <animal-list [childAnimalList]="animals" (clickSender)="editAnimal($event)" [childSelectedAnimal]="selectedAnimal" (doneButtonClickedSender)="finishedEditing()"></animal-list>
-    <!-- <edit-animal ></edit-animal> -->
+    <new-animal ></new-animal>
   </div>
   `
 })
