@@ -4,10 +4,15 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'animal-list',
   template: `
-  <select (change)="onChange($event.target.value)">
+  <select (change)="onDietChange($event.target.value)">
     <option value="allAnimals" selected="selected">All Animals</option>
     <option value="meatEaters">Meat Eaters</option>
     <option value="veggieEaters">Vegetable Eaters</option>
+  </select>
+
+  <select (change)="onNewChange($event.target.value)">
+    <option value="allAnimals">All Tasks</option>
+    <option value="yourAnimals">Animals added by you</option>
   </select>
 
   <ul class="list-group">
@@ -37,10 +42,15 @@ export class AnimalListComponent {
   @Output() doneButtonClickedSender = new EventEmitter();
 
   filterByDiet: string = "allAnimals";
+  filterByNew: string = "allAnimals";
 
-  onChange(optionFromMenu) {
+  onDietChange(optionFromMenu) {
     this.filterByDiet = optionFromMenu;
   }
+
+  onNewChange(optionFromMenu) {
+  this.filterByNew = optionFromMenu;
+}
 
   doneButtonClicked() {
     this.doneButtonClickedSender.emit();

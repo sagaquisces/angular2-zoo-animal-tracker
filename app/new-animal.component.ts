@@ -82,7 +82,7 @@ import { Animal } from './animal.model';
               </div>
             </div>
 
-            <button class="btn" (click)="submitForm(newSpecies.value, newName.value, newAge.value, newDiet.value, newLocation.value, newCaretakers.value, newSex.value, newLikes.value, newDislikes.value, newEnteredBy.value); newSpecies.value=''; newName.value=''; newAge.value=''; newLikes.value=''; newLocation.value=''; newCaretakers.value=''; newDislikes.value=''; newEnteredBy.value='';">Add Animal</button>
+            <button class="btn" (click)="submitForm(newSpecies.value, newName.value, newAge.value, newDiet.value, newLocation.value, newCaretakers.value, newSex.value, newLikes.value, newDislikes.value, 'new'); newSpecies.value=''; newName.value=''; newAge.value=''; newLikes.value=''; newLocation.value=''; newCaretakers.value=''; newDislikes.value=''; newEnteredBy.value='';">Add Animal</button>
 
 
           </div>
