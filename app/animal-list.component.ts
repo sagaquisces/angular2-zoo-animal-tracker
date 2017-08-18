@@ -11,6 +11,8 @@ import { Animal } from './animal.model';
     age: {{currentAnimal.age}}, diet: {{currentAnimal.diet}}, location: {{currentAnimal.location}}, No. of caretakers: {{currentAnimal.caretakers}}
 
     <button (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button>
+    <edit-animal [childSelectedAnimal]="childSelectedAnimal"
+    [childCurrentAnimal]="currentAnimal" (doneButtonClickedSender)="doneButtonClicked()"></edit-animal>
     </li>
   </ul>
   `
@@ -18,7 +20,14 @@ import { Animal } from './animal.model';
 
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
+  @Input() childSelectedAnimal: Animal;
   @Output() clickSender = new EventEmitter();
+  @Output() doneButtonClickedSender = new EventEmitter();
+
+  doneButtonClicked() {
+    this.doneButtonClickedSender.emit();
+  }
+
 
   dietColor(currentAnimal) {
     if (currentAnimal.diet === "Carnivore"){
