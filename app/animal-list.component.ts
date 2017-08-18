@@ -4,9 +4,14 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'animal-list',
   template: `
+  <select (change)="onChange($event.target.value)">
+    <option value="allAnimals" selected="selected">All Animals</option>
+    <option value="meatEaters">Meat Eaters</option>
+    <option value="veggieEaters">Vegetable Eaters</option>
+  </select>
 
   <ul class="list-group">
-    <li [class]="dietColor(currentAnimal)" *ngFor="let currentAnimal of childAnimalList">
+    <li [class]="dietColor(currentAnimal)" *ngFor="let currentAnimal of childAnimalList | diet:filterByDiet">
       <h2><span class="label label-default">{{currentAnimal.name}}</span></h2>
       <h3>{{currentAnimal.species}}</h3>
       <ul class="list-group">
@@ -30,6 +35,12 @@ export class AnimalListComponent {
   @Input() childSelectedAnimal: Animal;
   @Output() clickSender = new EventEmitter();
   @Output() doneButtonClickedSender = new EventEmitter();
+
+  filterByDiet: string = "allAnimals";
+
+  onChange(optionFromMenu) {
+    this.filterByDiet = optionFromMenu;
+  }
 
   doneButtonClicked() {
     this.doneButtonClickedSender.emit();
